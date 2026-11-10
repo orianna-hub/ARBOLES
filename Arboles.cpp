@@ -8,7 +8,7 @@ struct Nodo {
     Nodo* derecha;
 };
 
-// Crear un nuevo nodo
+// Crear nodo
 Nodo* crearNodo(int valor) {
     Nodo* nuevo = new Nodo();
 
@@ -19,7 +19,7 @@ Nodo* crearNodo(int valor) {
     return nuevo;
 }
 
-// Insertar elementos
+// Insertar en el arbol
 Nodo* insertar(Nodo* raiz, int valor) {
 
     if (raiz == NULL) {
@@ -36,9 +36,8 @@ Nodo* insertar(Nodo* raiz, int valor) {
     return raiz;
 }
 
-// RECORRIDO PREORDEN
+// Recorrido preorden
 void preorden(Nodo* raiz) {
-
     if (raiz != NULL) {
         cout << raiz->dato << " ";
         preorden(raiz->izquierda);
@@ -46,9 +45,8 @@ void preorden(Nodo* raiz) {
     }
 }
 
-// RECORRIDO INORDEN
+// Recorrido inorden
 void inorden(Nodo* raiz) {
-
     if (raiz != NULL) {
         inorden(raiz->izquierda);
         cout << raiz->dato << " ";
@@ -56,9 +54,8 @@ void inorden(Nodo* raiz) {
     }
 }
 
-// RECORRIDO POSTORDEN
+// Recorrido postorden
 void postorden(Nodo* raiz) {
-
     if (raiz != NULL) {
         postorden(raiz->izquierda);
         postorden(raiz->derecha);
@@ -66,24 +63,22 @@ void postorden(Nodo* raiz) {
     }
 }
 
-// PROGRAMA PRINCIPAL
+// Funcion principal
 int main() {
 
     Nodo* raiz = NULL;
-    int cantidad, valor;
 
-    cout << "Cuantos numeros desea ingresar? ";
-    cin >> cantidad;
+    // Numeros establecidos
+    int numeros[] = {50, 30, 70, 20, 40, 60, 80};
 
+    int cantidad = 7;
+
+    // Insertar los numeros
     for (int i = 0; i < cantidad; i++) {
-
-        cout << "Ingrese un numero: ";
-        cin >> valor;
-
-        raiz = insertar(raiz, valor);
+        raiz = insertar(raiz, numeros[i]);
     }
 
-    cout << "\nRECORRIDO PREORDEN: ";
+    cout << "RECORRIDO PREORDEN: ";
     preorden(raiz);
 
     cout << "\nRECORRIDO INORDEN: ";
